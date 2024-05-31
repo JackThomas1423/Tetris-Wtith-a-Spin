@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhkpbb7hqxy2m"]
+
+[ext_resource type="Texture2D" uid="uid://be2fvox1sb2wd" path="res://tetrominoes.png" id="1_e5jk4"]
+[ext_resource type="Script" path="res://TetrisMap.gd" id="2_7lmeh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wtle7"]
+resource_name = "tet_set"
+texture = ExtResource("1_e5jk4")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6t2vd"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_wtle7")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TetrisMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_6t2vd")
+format = 2
+layer_0/name = "background"
+layer_0/tile_data = PackedInt32Array(0, 458752, 0, 65536, 458752, 0, 131072, 458752, 0, 196608, 458752, 0, 262144, 458752, 0, 327680, 458752, 0, 393216, 458752, 0, 458752, 458752, 0, 524288, 458752, 0, 589824, 458752, 0, 655360, 458752, 0, 720896, 458752, 0, 786432, 458752, 0, 851968, 458752, 0, 917504, 458752, 0, 983040, 458752, 0, 983041, 458752, 0, 983042, 458752, 0, 983043, 458752, 0, 983044, 458752, 0, 983045, 458752, 0, 983046, 458752, 0, 983047, 458752, 0, 983048, 458752, 0, 983049, 458752, 0, 983050, 458752, 0, 983051, 458752, 0, 983052, 458752, 0, 983053, 458752, 0, 917517, 458752, 0, 851981, 458752, 0, 786445, 458752, 0, 720909, 458752, 0, 655373, 458752, 0, 589837, 458752, 0, 524301, 458752, 0, 458765, 458752, 0, 393229, 458752, 0, 327693, 458752, 0, 262157, 458752, 0, 196621, 458752, 0, 131085, 458752, 0, 65549, 458752, 0, 13, 458752, 0)
+script = ExtResource("2_7lmeh")
+
+[node name="BlockFallTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="timeout" from="BlockFallTimer" to="TetrisMap" method="_on_block_fall_timer_timeout"]
